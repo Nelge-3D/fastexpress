@@ -4,7 +4,7 @@ import Services from '@/components/Services'
 import Tarifs from '@/components/Tarifs'
 import Business from '@/components/Business'
 import About from '@/components/About'
-import Contact from '@/components/Contact'
+/*import Contact from '@/components/Contact'*/
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/Whatsappbutton'
 
@@ -17,7 +17,7 @@ export default function Home() {
       <Tarifs />
       <Business />
       <About />
-      <Contact />
+      {/*<Contact />*/}
       <Footer />
       <WhatsAppButton />
     </main>
