@@ -2,174 +2,221 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
-import { MessageCircle, Phone, Clock, MapPin, ArrowRight } from 'lucide-react'
+import { Zap, Shield, Heart, MapPin } from 'lucide-react'
 
-const contactCards = [
+const members = [
+  { name: 'Jean-Marc Obame', role: 'Fondateur & CEO', initials: 'JO', color: 'bg-[#1a5c2a]' },
+  { name: 'Sandrine Mba', role: 'Responsable Livraisons', initials: 'SM', color: 'bg-[#f5a623]' },
+  { name: 'Patrick Nguema', role: 'Chef des Coursiers', initials: 'PN', color: 'bg-emerald-600' },
+  { name: 'Aurore Biyoghe', role: 'Service Client', initials: 'AB', color: 'bg-amber-500' },
+  { name: 'Rodrigue Ella', role: 'Logistique & Stocks', initials: 'RE', color: 'bg-[#246b35]' },
+  { name: 'Fatima Mouele', role: 'E-commerce & Pro', initials: 'FM', color: 'bg-yellow-600' },
+  { name: 'Cédric Ossomba', role: 'Chauffeur Senior', initials: 'CO', color: 'bg-green-700' },
+  { name: 'Laure Minko', role: 'Comptabilité', initials: 'LM', color: 'bg-[#d4891a]' },
+]
+
+// Duplicate for infinite scroll effect
+const allMembers = [...members, ...members]
+
+const values = [
   {
-    icon: MessageCircle,
-    title: 'WhatsApp',
-    value: '066 64 70 96',
-    desc: 'Réponse rapide, commande en ligne',
-    href: 'https://wa.me/24166647096?text=Bonjour%20Fast%20Express,%20je%20voudrais%20une%20livraison.',
-    color: 'bg-green-500',
-    hoverColor: 'hover:bg-green-600',
-    cta: 'Envoyer un message',
+    icon: Zap,
+    title: 'Rapidité',
+    desc: 'Livraison dans les meilleurs délais, toujours dans les temps.',
+    color: 'bg-amber-100 text-amber-600',
   },
   {
-    icon: Phone,
-    title: 'Téléphone',
-    value: '066 64 70 96',
-    value2: '074 75 57 28',
-    desc: 'Appelez-nous directement',
-    href: 'tel:0666470096',
-    color: 'bg-[#1a5c2a]',
-    hoverColor: 'hover:bg-[#246b35]',
-    cta: 'Appeler maintenant',
+    icon: Shield,
+    title: 'Sécurité',
+    desc: 'Vos colis sont entre de bonnes mains, traités avec soin.',
+    color: 'bg-blue-100 text-blue-600',
   },
   {
-    icon: Clock,
-    title: 'Horaires',
-    value: 'Lun – Sam',
-    value2: '7h – 21h',
-    desc: 'Disponibles 6 jours / 7',
-    href: null,
-    color: 'bg-[#f5a623]',
-    hoverColor: '',
-    cta: null,
+    icon: Heart,
+    title: 'Confiance',
+    desc: 'Un service client attentif et à l\'écoute en permanence.',
+    color: 'bg-rose-100 text-rose-600',
+  },
+  {
+    icon: MapPin,
+    title: 'Proximité',
+    desc: 'Présent dans toutes les zones de Libreville et environs.',
+    color: 'bg-green-100 text-green-600',
   },
 ]
 
-const quickMessages = [
-  { text: 'Je veux livrer un colis', emoji: '📦' },
-  { text: 'Je veux déménager', emoji: '🏠' },
-  { text: 'Service entreprise', emoji: '🏢' },
-  { text: 'Demander un devis', emoji: '💬' },
+const zones = [
+  'Libreville', 'Akanda', 'Owendo', 'Ntoum', 'Cap Estérias',
 ]
 
-export default function Contact() {
+export default function About() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section
-      id="contact"
-      className="py-20 px-4 md:px-8 bg-[#1a5c2a] relative overflow-hidden"
-    >
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/5 blob-1" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-[#f5a623]/10 blob-2" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-            backgroundSize: '30px 30px',
-          }}
-        />
-      </div>
-
-      <div className="container-custom relative z-10" ref={ref}>
+    <section id="apropos" className="py-20 px-4 md:px-8 bg-white">
+      <div className="container-custom" ref={ref}>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-[#f5a623] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+          <div className="section-badge">
             <span className="w-1.5 h-1.5 rounded-full bg-[#f5a623]" />
-            Contact
+            À propos
           </div>
-          <h2 className="font-[var(--font-sora)] text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-            Contactez-nous{' '}
-            <span className="text-[#f5a623]">maintenant</span>
+          <h2 className="font-[var(--font-sora)] text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-4">
+            Fast Livraison{' '}
+            <span className="text-[#f5a623]">Express</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-xl mx-auto">
-            Besoin d&apos;une livraison ? Appelez-nous ou écrivez-nous sur WhatsApp.
-            Nous sommes là pour vous !
-          </p>
         </motion.div>
 
-        {/* Contact cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
-          {contactCards.map((card, i) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              whileHover={{ y: -4 }}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-7 text-center hover:bg-white/15 transition-all"
-            >
-              <div className={`${card.color} w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg`}>
-                <card.icon className="w-7 h-7 text-white" />
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          {/* Story */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+              Fast Express est une société de livraison et de logistique basée à
+              Libreville, au Gabon. Nous offrons des services de livraison de
+              colis, de déménagement et de solutions logistiques pour les
+              particuliers et les entreprises.
+            </p>
+            <p className="text-gray-600 text-lg leading-relaxed mb-8">
+              Notre mission : rendre la livraison accessible, rapide et fiable
+              pour tous. Que vous soyez un particulier ou un vendeur en ligne,
+              nous avons la solution qu&apos;il vous faut.
+            </p>
+
+            {/* Zones */}
+            <div>
+              <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">
+                Zones couvertes
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {zones.map((zone, i) => (
+                  <motion.span
+                    key={zone}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.4 + i * 0.08 }}
+                    className="flex items-center gap-1.5 bg-[#1a5c2a]/5 text-[#1a5c2a] border border-[#1a5c2a]/20 text-sm font-semibold px-4 py-2 rounded-full"
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-[#f5a623]" />
+                    {zone}
+                  </motion.span>
+                ))}
               </div>
-              <h3 className="font-[var(--font-sora)] text-white font-bold text-lg mb-1">
-                {card.title}
-              </h3>
-              <p className="text-white/50 text-sm mb-3">{card.desc}</p>
-              <p className="text-white font-bold text-xl">{card.value}</p>
-              {card.value2 && (
-                <p className="text-[#f5a623] font-bold text-xl">{card.value2}</p>
-              )}
-              {card.href && card.cta && (
-                <motion.a
-                  href={card.href}
-                  target={card.href.startsWith('http') ? '_blank' : undefined}
-                  rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`mt-5 flex items-center justify-center gap-2 ${card.color} ${card.hoverColor} text-white font-semibold py-3 px-6 rounded-xl transition-colors`}
-                >
-                  {card.cta}
-                  <ArrowRight className="w-4 h-4" />
-                </motion.a>
-              )}
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
+
+          {/* Values grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="grid grid-cols-2 gap-4"
+          >
+            {values.map((val, i) => (
+              <motion.div
+                key={val.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="bg-gray-50 rounded-3xl p-6 border border-gray-100 hover:shadow-md transition-all"
+              >
+                <div className={`${val.color} w-11 h-11 rounded-2xl flex items-center justify-center mb-4`}>
+                  <val.icon className="w-5 h-5" />
+                </div>
+                <h3 className="font-[var(--font-sora)] font-bold text-gray-900 mb-2">
+                  {val.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {val.desc}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Quick WhatsApp messages */}
+        {/* Members scrolling band */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-white/50 text-sm font-medium mb-4 uppercase tracking-widest">
-            Messages rapides WhatsApp
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {quickMessages.map((msg, i) => (
-              <motion.a
-                key={msg.text}
-                href={`https://wa.me/24166647096?text=${encodeURIComponent(msg.text)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.5 + i * 0.08 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-white/10 hover:bg-[#f5a623] border border-white/20 hover:border-[#f5a623] text-white hover:text-[#1a5c2a] font-semibold text-sm px-5 py-3 rounded-full transition-all"
-              >
-                <span>{msg.emoji}</span>
-                {msg.text}
-              </motion.a>
-            ))}
+          {/* Header */}
+          <div className="text-center mb-10">
+            <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">
+              Notre équipe
+            </p>
+            <h3 className="font-[var(--font-sora)] text-2xl md:text-3xl font-black text-gray-900">
+              Les personnes derrière{' '}
+              <span className="text-[#f5a623]">Fast Express</span>
+            </h3>
           </div>
-        </motion.div>
 
-        {/* Location note */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.7 }}
-          className="mt-10 flex items-center justify-center gap-2 text-white/40 text-sm"
-        >
-          <MapPin className="w-4 h-4 text-[#f5a623]" />
-          Basé à Libreville, Gabon — Service disponible dans toute la zone urbaine
+          {/* Infinite scroll track */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#1a5c2a] via-[#246b35] to-[#1a5c2a] py-10 px-0">
+            {/* Left fade */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#1a5c2a] to-transparent pointer-events-none" />
+            {/* Right fade */}
+            <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#1a5c2a] to-transparent pointer-events-none" />
+
+            {/* Scrolling row */}
+            <motion.div
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{
+                duration: 28,
+                ease: 'linear',
+                repeat: Infinity,
+              }}
+              className="flex gap-8 w-max"
+            >
+              {allMembers.map((member, i) => (
+                <div
+                  key={`${member.name}-${i}`}
+                  className="flex flex-col items-center gap-3 group flex-shrink-0"
+                >
+                  {/* Avatar circle */}
+                  <div className="relative">
+                    <div
+                      className={`w-20 h-20 rounded-full ${member.color} flex items-center justify-center 
+                        shadow-xl ring-4 ring-white/20 group-hover:ring-[#f5a623]/60 
+                        transition-all duration-300 group-hover:scale-110`}
+                    >
+                      <span className="font-[var(--font-sora)] text-white font-black text-lg">
+                        {member.initials}
+                      </span>
+                    </div>
+                    {/* Online dot */}
+                    <span className="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-[#1a5c2a]" />
+                  </div>
+
+                  {/* Name & role */}
+                  <div className="text-center">
+                    <p className="font-[var(--font-sora)] text-white font-bold text-sm whitespace-nowrap">
+                      {member.name}
+                    </p>
+                    <p className="text-[#f5a623] text-xs font-medium whitespace-nowrap mt-0.5">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Tagline under band */}
+          <p className="text-center text-gray-400 text-sm mt-5">
+            🤝 Une équipe passionnée, disponible 6j/7 pour votre satisfaction
+          </p>
         </motion.div>
       </div>
     </section>
