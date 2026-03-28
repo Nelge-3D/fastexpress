@@ -31,7 +31,7 @@ export default function WhatsAppButton() {
 
   const quickMessages = [
     { text: 'Livrer un colis 📦', msg: 'Bonjour, je veux livrer un colis.' },
-    { text: 'Déménager 🏠', msg: 'Bonjour, je veux un service de déménagement.' },
+    { text: 'Déménager 🏠', msg: 'Bonjour, je veux un service de Déménagement.' },
     { text: 'Service entreprise 🏢', msg: 'Bonjour, je suis intéressé par vos services entreprise.' },
   ]
 

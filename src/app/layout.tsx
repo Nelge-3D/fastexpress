@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Sora, Inter } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/Whatsappbutton'
 
 const sora = Sora({
   subsets: ['latin'],
@@ -19,10 +22,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Fast Livraison Express — Livraison & Déménagement à Libreville',
   description:
-    'Fast Express, votre partenaire logistique de confiance à Libreville. Livraison de colis, déménagement et services aux entreprises. Commandez via WhatsApp.',
+    'Fast Express, votre partenaire logistique de confiance à Libreville. Livraison de colis, Déménagement et services aux entreprises. Commandez via WhatsApp.',
   keywords: [
     'livraison Libreville',
-    'déménagement Gabon',
+    'Déménagement Gabon',
     'Fast Express',
     'colis Libreville',
     'logistique Gabon',
@@ -46,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${sora.variable} ${inter.variable}`}>
       <body className={`${inter.className} antialiased`}>
-        {children}
+        <Navbar/><WhatsAppButton/>{children}<Footer/>
       </body>
     </html>
   )

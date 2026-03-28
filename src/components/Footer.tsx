@@ -8,7 +8,6 @@ const footerLinks = [
     links: [
       { label: 'Accueil', href: '#accueil' },
       { label: 'Services', href: '#services' },
-      { label: 'Tarifs', href: '#tarifs' },
       { label: 'Entreprises', href: '#business' },
       { label: 'À propos', href: '#apropos' },
       { label: 'Contact', href: '#contact' },
@@ -22,17 +21,6 @@ const footerLinks = [
       { label: 'Gros Colis', href: '#services' },
       { label: 'Déménagement', href: '#services' },
       { label: 'E-commerce', href: '#business' },
-      { label: 'Fast Business', href: '#business' },
-    ],
-  },
-  {
-    title: 'Zones',
-    links: [
-      { label: 'Libreville', href: '#contact' },
-      { label: 'Akanda', href: '#contact' },
-      { label: 'Owendo', href: '#contact' },
-      { label: 'Ntoum', href: '#contact' },
-      { label: 'Cap Estérias', href: '#contact' },
     ],
   },
 ]
@@ -45,67 +33,109 @@ const handleNavClick = (href: string) => {
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8 px-4 md:px-8">
+    <footer className="bg-gray-950 text-gray-400 pt-10 pb-6 px-4 md:px-8">
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-
+  
+        {/* ── MOBILE VERSION ───────────────────────── */}
+        <div className="md:hidden flex flex-col items-center text-center gap-4 mb-6">
+  
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-[#f5a623] flex items-center justify-center shadow-md">
-                <span className="text-[#1a5c2a] font-black text-sm">FE</span>
+          <div>
+            <div className="font-bold text-lg text-white font-[var(--font-sora)]">
+              Fast Express
+            </div>
+            <div className="text-[10px] tracking-widest uppercase text-gray-500">
+              Delivery
+            </div>
+          </div>
+  
+          {/* Short description */}
+          <p className="text-gray-500 text-xs max-w-xs">
+            Livraison rapide à Libreville
+          </p>
+  
+          {/* CTA principal */}
+          <a
+            href="https://wa.me/24166647096"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-[#1a5c2a] text-white text-xs font-bold px-4 py-2.5 rounded-xl"
+          >
+            <MessageCircle className="w-4 h-4" />
+            Commander
+          </a>
+  
+          {/* Contact minimal */}
+          <div className="flex items-center gap-4 text-xs text-gray-500">
+            <a href="tel:0666470096" className="flex items-center gap-1">
+              <Phone className="w-3 h-3" />
+              Appeler
+            </a>
+  
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              Libreville
+            </span>
+          </div>
+        </div>
+  
+        {/* ── DESKTOP VERSION ───────────────────────── */}
+        <div className="hidden md:grid grid-cols-4 gap-8 mb-8">
+  
+          {/* BRAND */}
+          <div>
+            <div className="mb-4">
+              <div className="font-bold text-lg text-white font-[var(--font-sora)]">
+                Fast Express
               </div>
-              <div>
-                <div className="font-black text-lg text-white font-[var(--font-sora)]">
-                  Fast Express
-                </div>
-                <div className="text-[10px] font-medium tracking-widest uppercase text-[#f5a623]">
-                  Delivery
-                </div>
+              <div className="text-[10px] font-medium tracking-widest uppercase text-gray-500">
+                Delivery
               </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
-              Votre partenaire logistique de confiance à Libreville. Livraison
-              de colis, déménagement et services aux entreprises.
+  
+            <p className="text-gray-500 text-xs leading-relaxed mb-4">
+              Livraison rapide et fiable à Libreville
             </p>
-
-            {/* Contact info */}
-            <div className="space-y-3">
+  
+            <div className="space-y-2">
               <a
                 href="https://wa.me/24166647096"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#f5a623] transition-colors group"
+                className="flex items-center gap-2 text-xs text-gray-500 hover:text-white"
               >
-                <MessageCircle className="w-4 h-4 text-green-500 group-hover:text-[#f5a623]" />
+                <MessageCircle className="w-3 h-3" />
                 WhatsApp : 066 64 70 96
               </a>
+  
               <a
                 href="tel:0666470096"
-                className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#f5a623] transition-colors group"
+                className="flex items-center gap-2 text-xs text-gray-500 hover:text-white"
               >
-                <Phone className="w-4 h-4 text-blue-400 group-hover:text-[#f5a623]" />
-                Tél : 066 64 70 96 / 074 75 57 28
+                <Phone className="w-3 h-3" />
+                066 64 70 96 / 074 75 57 28
               </a>
-              <div className="flex items-center gap-3 text-sm text-gray-400">
-                <MapPin className="w-4 h-4 text-[#f5a623]" />
+  
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <MapPin className="w-3 h-3" />
                 Libreville, Gabon
               </div>
             </div>
           </div>
-
-          {/* Links */}
+  
+          {/* LINKS */}
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h4 className="font-[var(--font-sora)] font-bold text-white mb-5 text-sm uppercase tracking-wider">
+              <h4 className="font-[var(--font-sora)] font-semibold text-white text-xs uppercase tracking-wider mb-3">
                 {group.title}
               </h4>
-              <ul className="space-y-3">
+  
+              <ul className="space-y-1.5">
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <button
                       onClick={() => handleNavClick(link.href)}
-                      className="text-gray-400 hover:text-[#f5a623] text-sm transition-colors text-left"
+                      className="text-gray-500 hover:text-white text-xs"
                     >
                       {link.label}
                     </button>
@@ -115,16 +145,18 @@ export default function Footer() {
             </div>
           ))}
         </div>
-
-        {/* Bottom bar */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Fast Livraison Express — Libreville, Gabon
+  
+        {/* ── BOTTOM ───────────────────────── */}
+        <div className="border-t border-gray-800 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          <p className="text-gray-600 text-xs">
+            © {new Date().getFullYear()} Fast Express Delivery
           </p>
-          <p className="text-gray-600 text-sm flex items-center gap-1.5">
-            Fait avec <Heart className="w-3.5 h-3.5 text-red-400 fill-red-400" /> au Gabon
+  
+          <p className="text-gray-600 text-xs flex items-center gap-1">
+            Fait avec <Heart className="w-2.5 h-2.5 text-red-500 fill-red-500" /> au Gabon
           </p>
         </div>
+  
       </div>
     </footer>
   )
