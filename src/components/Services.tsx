@@ -432,23 +432,32 @@ export default function Services() {
                     </h3>
                   </div>
 
-                  {/* Tabs */}
-                  <div className="flex gap-2 mb-5 flex-wrap">
-                    {(['Voiture', 'Déménagement'] as const).map((tab) => (
-                      <button
-                        key={tab}
-                        onClick={() => setActiveVehicle(tab)}
-                        className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                          activeVehicle === tab
-                            ? 'bg-white text-black-600 shadow-md'
-                            : 'bg-white/20 text-black hover:bg-white/30'
-                        }`}
-                      >
-                        {tab === 'Voiture' ? '🚐' : '🚚'}
-                        {tab === 'Voiture' ? 'Voiture' : 'Déménagement'}
-                      </button>
-                    ))}
-                  </div>
+                 {/* Tabs */}
+<div className="flex gap-2 mb-5 flex-wrap">
+  {(['Voiture', 'Déménagement'] as const).map((tab) => (
+    <button
+      key={tab}
+      onClick={() => setActiveVehicle(tab)}
+      className={`
+        flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold 
+        transition-all duration-200 transform hover:scale-105
+        ${
+          activeVehicle === tab
+            ? 'bg-gradient-to-r from-green-500 to-blue-600 text-white shadow-lg shadow-blue-500/30 ring-2 ring-blue-400 ring-offset-2 ring-offset-gray-50'
+            : 'bg-gray-100/80 text-gray-700 hover:bg-gray-200 hover:text-gray-900 border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow'
+        }
+      `}
+    >
+      <span className="text-base sm:text-lg">{tab === 'Voiture' ? '🚐' : '🚚'}</span>
+      {tab === 'Voiture' ? 'Voiture' : 'Déménagement'}
+      
+      {/* Indicateur de surbrillance supplémentaire pour l'onglet actif */}
+      {activeVehicle === tab && (
+        <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full"></span>
+      )}
+    </button>
+  ))}
+</div>
 
                   <p className={`
                     text-black/80
