@@ -108,6 +108,22 @@ export default function Contact() {
           <MapPin className="w-3 h-3 text-[#f5a623]" />
           Libreville, Gabon — Livraison dans toute la zone urbaine
         </motion.div>
+
+        {/* Email contact */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.4 }}
+          className="flex items-center justify-center gap-2 mt-4 text-white/60 text-sm"
+        >
+          <span>📧</span>
+          <a 
+            href="mailto:Fastexpresslbv@gmail.com" 
+            className="hover:text-[#f5a623] transition-colors"
+          >
+            Fastexpresslbv@gmail.com
+          </a>
+        </motion.div>
       </div>
     </section>
   )

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { MessageCircle, X } from 'lucide-react'
+import Image from 'next/image'
 
 export default function WhatsAppButton() {
   const [visible, setVisible] = useState(false)
@@ -60,8 +61,14 @@ export default function WhatsAppButton() {
 
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-4 pr-6">
-                  <div className="w-10 h-10 rounded-xl bg-[#1a5c2a] flex items-center justify-center">
-                    <span className="text-[#f5a623] font-black text-xs">FE</span>
+                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden">
+                    <Image 
+                      src="/logo.png" 
+                      alt="Fast Express Logo" 
+                      width={50} 
+                      height={50}
+                      className="object-contain"
+                    />
                   </div>
                   <div>
                     <p className="font-bold text-gray-900 text-sm">Fast Express</p>
