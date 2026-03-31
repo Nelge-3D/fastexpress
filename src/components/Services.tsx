@@ -94,7 +94,7 @@ const motoRoutes = [
   { from: 'Libreville', to: 'Akanda', price: '3 000' },
   { from: 'Akanda', to: 'Akanda', price: '2 000' },
   { from: 'Libreville', to: 'Bikele', price: '3 000' },
-  { from: 'Akanda', to: 'PK12/Bikele', price: '3 000' },
+  { from: 'Akanda', to: 'PK12/Bikele', price: '4 000' },
   { from: 'Libreville / Bikele', to: 'Owendo', price: '3 000' },
 ]
 
