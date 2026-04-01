@@ -88,14 +88,27 @@ const services = [
   },
 ]
 
-// Moto routes from image
+// Moto routes avec double prix pour Akanda et Owendo vers PK12/Bikele
 const motoRoutes = [
   { from: 'Libreville', to: 'Libreville', price: '2 000' },
   { from: 'Libreville', to: 'Akanda', price: '3 000' },
   { from: 'Akanda', to: 'Akanda', price: '2 000' },
   { from: 'Libreville', to: 'Bikele', price: '3 000' },
-  { from: 'Akanda', to: 'PK12/Bikele', price: '4 000' },
   { from: 'Libreville / Bikele', to: 'Owendo', price: '3 000' },
+  { 
+    from: 'Akanda', 
+    to: 'PK12/Bikele', 
+    price: '3 500',
+    hasDoublePrice: true,
+    price2: '4 000'
+  },
+  { 
+    from: 'Owendo', 
+    to: 'PK12/Bikele', 
+    price: '3 500',
+    hasDoublePrice: true,
+    price2: '4 000'
+  },
 ]
 
 const cardVariants: Variants = {
@@ -168,27 +181,18 @@ export default function Services() {
       id="services" 
       className={`
         bg-[#f9fafb]
-        /* Mobile (par défaut) */
         py-12 px-4
-        /* Tablette (640px et plus) */
         sm:py-16 sm:px-6
-        /* Desktop (1024px et plus) */
         lg:py-20 lg:px-8
-        /* Grands écrans (1280px et plus) */
         xl:py-24 xl:px-12 
       `}
     >
       <div className={`
         container-custom mx-auto
-        /* Mobile */
         max-w-full
-        /* Tablette */
         sm:max-w-[640px]
-        /* Desktop */
         lg:max-w-[1024px]
-        /* Grand écran */
         xl:max-w-[1280px]
-        /* Écran large */
         2xl:max-w-[1536px]
       `}>
         {/* ── Header ───────────────────────────────────────────────────── */}
@@ -199,11 +203,8 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className={`
             text-center
-            /* Mobile */
             mb-10
-            /* Tablette */
             sm:mb-12
-            /* Desktop */
             lg:mb-16
           `}
         >
@@ -213,13 +214,9 @@ export default function Services() {
           </div>
           <h2 className={`
             font-[var(--font-sora)] font-black text-gray-900
-            /* Mobile */
             text-2xl mb-3
-            /* Tablette */
             sm:text-3xl sm:mb-3.5
-            /* Desktop */
             lg:text-4xl lg:mb-4
-            /* Grand écran */
             xl:text-5xl
           `}>
             Des solutions pour{' '}
@@ -227,11 +224,8 @@ export default function Services() {
           </h2>
           <p className={`
             text-gray-500
-            /* Mobile */
             text-base max-w-sm mx-auto
-            /* Tablette */
             sm:text-lg sm:max-w-xl
-            /* Desktop */
             lg:text-xl lg:max-w-2xl
           `}>
             Que vous soyez un particulier ou une entreprise, Fast Express a la
@@ -245,11 +239,8 @@ export default function Services() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, delay: 0.15 }}
           className={`
-            /* Mobile */
             mb-8
-            /* Tablette */
             sm:mb-9
-            /* Desktop */
             lg:mb-10
           `}
         >
@@ -261,11 +252,8 @@ export default function Services() {
               {/* Left — identity */}
               <div className={`
                 bg-[#f5a623]
-                /* Mobile */
                 px-5 py-8 gap-4
-                /* Tablette */
                 sm:px-6 sm:py-9 sm:gap-5
-                /* Desktop */
                 lg:px-8 lg:py-10 lg:gap-6
                 flex flex-col justify-between
               `}>
@@ -279,16 +267,12 @@ export default function Services() {
                   {/* Title */}
                   <div className="flex items-center gap-3 mb-3">
                     <span className={`
-                      /* Mobile */
                       text-4xl
-                      /* Desktop */
                       lg:text-5xl
                     `}>🛵</span>
                     <h3 className={`
                       font-[var(--font-sora)] text-[#1a5c2a] font-black
-                      /* Mobile */
                       text-2xl
-                      /* Tablette */
                       sm:text-3xl
                       leading-tight
                     `}>
@@ -298,9 +282,7 @@ export default function Services() {
 
                   <p className={`
                     text-[#1a5c2a]/75
-                    /* Mobile */
                     text-sm leading-relaxed
-                    /* Tablette */
                     sm:text-base
                   `}>
                     Livraison ultra-rapide de documents, repas, médicaments,
@@ -337,11 +319,8 @@ export default function Services() {
               {/* Right — price table */}
               <div className={`
                 bg-[#1a5c2a]
-                /* Mobile */
                 px-5 py-8
-                /* Tablette */
                 sm:px-6 sm:py-9
-                /* Desktop */
                 lg:px-8 lg:py-10
                 flex flex-col justify-center
               `}>
@@ -363,10 +342,27 @@ export default function Services() {
                         <ArrowRight className="w-3.5 h-3.5 text-[#f5a623] flex-shrink-0" />
                         <span className="font-medium text-xs sm:text-sm">{route.to}</span>
                       </div>
-                      <span className="text-[#f5a623] font-black text-sm whitespace-nowrap ml-2">
-                        {route.price}
-                        <span className="text-white/50 font-normal text-xs ml-1">Fcfa</span>
-                      </span>
+                      
+                      {/* Affichage du prix avec gestion du double prix */}
+                      <div className="text-right">
+                        {route.hasDoublePrice ? (
+                          <div className="flex flex-col items-end">
+                            <span className="text-[#f5a623] font-black text-sm whitespace-nowrap">
+                              {route.price}
+                              <span className="text-white/50 font-normal text-xs ml-1">Fcfa</span>
+                            </span>
+                            <span className="text-[#f5a623] text-xs">
+                              / {route.price2}
+                              <span className="text-white/40 text-[10px] ml-0.5">Fcfa</span>
+                            </span>
+                          </div>
+                        ) : (
+                          <span className="text-[#f5a623] font-black text-sm whitespace-nowrap ml-2">
+                            {route.price}
+                            <span className="text-white/50 font-normal text-xs ml-1">Fcfa</span>
+                          </span>
+                        )}
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -384,11 +380,8 @@ export default function Services() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, delay: 0.25 }}
           className={`
-            /* Mobile */
             mb-8
-            /* Tablette */
             sm:mb-9
-            /* Desktop */
             lg:mb-10
           `}
         >
@@ -398,11 +391,8 @@ export default function Services() {
               {/* Left */}
               <div className={`
                 bg-gradient-to-br from-white-500 to-white-600
-                /* Mobile */
                 px-5 py-8 gap-6
-                /* Tablette */
                 sm:px-6 sm:py-9 sm:gap-7
-                /* Desktop */
                 lg:px-8 lg:py-10 lg:gap-8
                 flex flex-col justify-between h-full
               `}>
@@ -415,16 +405,12 @@ export default function Services() {
                   {/* Title */}
                   <div className="flex items-center gap-3 mb-3">
                     <span className={`
-                      /* Mobile */
                       text-4xl
-                      /* Desktop */
                       lg:text-5xl
                     `}>🚐</span>
                     <h3 className={`
                       font-[var(--font-sora)] text-black font-black
-                      /* Mobile */
                       text-2xl
-                      /* Tablette */
                       sm:text-3xl
                       leading-tight
                     `}>
@@ -432,38 +418,35 @@ export default function Services() {
                     </h3>
                   </div>
 
-                 {/* Tabs */}
-<div className="flex gap-2 mb-5 flex-wrap">
-  {(['Voiture', 'Déménagement'] as const).map((tab) => (
-    <button
-      key={tab}
-      onClick={() => setActiveVehicle(tab)}
-      className={`
-        flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold 
-        transition-all duration-200 transform hover:scale-105
-        ${
-          activeVehicle === tab
-            ? 'bg-gradient-to-r from-green-500 to-blue-600 text-white shadow-lg shadow-blue-500/30 ring-2 ring-blue-400 ring-offset-2 ring-offset-gray-50'
-            : 'bg-gray-100/80 text-gray-700 hover:bg-gray-200 hover:text-gray-900 border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow'
-        }
-      `}
-    >
-      <span className="text-base sm:text-lg">{tab === 'Voiture' ? '🚐' : '🚚'}</span>
-      {tab === 'Voiture' ? 'Voiture' : 'Déménagement'}
-      
-      {/* Indicateur de surbrillance supplémentaire pour l'onglet actif */}
-      {activeVehicle === tab && (
-        <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full"></span>
-      )}
-    </button>
-  ))}
-</div>
+                  {/* Tabs */}
+                  <div className="flex gap-2 mb-5 flex-wrap">
+                    {(['Voiture', 'Déménagement'] as const).map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveVehicle(tab)}
+                        className={`
+                          flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold 
+                          transition-all duration-200 transform hover:scale-105
+                          ${
+                            activeVehicle === tab
+                              ? 'bg-gradient-to-r from-green-500 to-blue-600 text-white shadow-lg shadow-blue-500/30 ring-2 ring-blue-400 ring-offset-2 ring-offset-gray-50'
+                              : 'bg-gray-100/80 text-gray-700 hover:bg-gray-200 hover:text-gray-900 border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow'
+                          }
+                        `}
+                      >
+                        <span className="text-base sm:text-lg">{tab === 'Voiture' ? '🚐' : '🚚'}</span>
+                        {tab === 'Voiture' ? 'Voiture' : 'Déménagement'}
+                        
+                        {activeVehicle === tab && (
+                          <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-white rounded-full"></span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
 
                   <p className={`
                     text-black/80
-                    /* Mobile */
                     text-sm leading-relaxed
-                    /* Tablette */
                     sm:text-base
                   `}>
                     {activeVehicle === 'Voiture'
@@ -517,11 +500,8 @@ export default function Services() {
               {/* Right */}
               <div className={`
                 bg-green-900
-                /* Mobile */
                 px-5 py-8
-                /* Tablette */
                 sm:px-6 sm:py-9
-                /* Desktop */
                 lg:px-8 lg:py-10
                 flex flex-col justify-center
               `}>
@@ -722,8 +702,6 @@ export default function Services() {
             ))}
           </div>
         </motion.div>
-          
-
       </div>
     </section>
   )

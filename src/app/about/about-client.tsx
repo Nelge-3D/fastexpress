@@ -2,44 +2,44 @@
 
 import { useRef, useEffect } from 'react'
 import { motion, useInView } from 'motion/react'
-import { Zap, Shield, Heart, MapPin, User } from 'lucide-react' // Ajout de l'icône User en fallback
+import { Zap, Shield, Heart, MapPin } from 'lucide-react' // Ajout de l'icône User en fallback
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image' // Importer le composant Image de Next.js
 
 // --- DONNÉES MISES À JOUR ---
 const members = [
   { 
-    name: 'Emmanuel Arlau Ikapa Mouguiama', 
+    name: 'Emmanuel Arlau IKAPA MOUGUIAMA', 
     role: 'Responsable Logistique', 
     photo: '/team/ikapa-mouguiama-emmanuel-arlau.png',
     color: 'bg-[#1a5c2a]' 
   },
   { 
-    name: 'Dorelle Lipili Milolo', 
+    name: 'Dorelle LIPILI ', 
     role: 'Assistante Administrative', 
     photo: '/team/lipili-milolo-dorelle.png',
     color: 'bg-[#f5a623]' 
   },
   { 
-    name: 'Waynella Apinda', 
+    name: 'Waynella APINDA', 
     role: 'Assistante Logistique', 
     photo: '/team/apinda-waynella.png',
     color: 'bg-emerald-600' 
   },
   { 
-    name: 'Stéphane Mombo Ledehan', 
+    name: 'Stéphane MOMBO LEDEHAN', 
     role: 'Co-Gérant & Fondateur', 
     photo: '/team/mombo-ledehan-stephane.png',
     color: 'bg-amber-500' 
   },
   { 
-    name: 'Eric Ben Djoloune', 
+    name: 'Eric Ben DJOLOUNE', 
     role: 'Co-Gérant & Fondateur', 
     photo: '/team/ben-djoloune-eric.png',
     color: 'bg-[#246b35]' 
   },
   { 
-    name: 'Grâce Simangoye', 
+    name: 'Grâce SIMANGOYE', 
     role: 'Responsable Commerciale', 
     photo: '/team/simangoye-grace.png',
     color: 'bg-yellow-600' 
