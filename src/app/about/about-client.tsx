@@ -17,7 +17,7 @@ const members = [
   { 
     name: 'Dorelle LIPILI ', 
     role: 'Assistante Administrative', 
-    photo: '/team/lipili-milolo-dorelle.png',
+    photo: '/team/lipili-dorelle.png',
     color: 'bg-[#f5a623]' 
   },
   { 
