@@ -295,34 +295,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Version mobile de l'app - affichée uniquement sur petits écrans */}
-      {isMobile && (
-        <div className="lg:hidden fixed bottom-4 right-4 z-20">
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-2 shadow-lg"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg overflow-hidden">
-                <Image
-                  src="/appicon.jpeg"
-                  alt="Fast Express app"
-                  width={32}
-                  height={32}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <div>
-                <div className="text-white font-semibold text-xs">Fast Delivery</div>
-                <div className="text-white/50 text-[8px]">Bientôt disponible</div>
-              </div>
-              <Bell className="w-3 h-3 text-[#f5a623]" />
-            </div>
-          </motion.div>
-        </div>
-      )}
     </section>
   )
 }
