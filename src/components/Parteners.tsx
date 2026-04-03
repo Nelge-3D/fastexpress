@@ -36,6 +36,13 @@ const partners: Partner[] = [
     description: 'Luxe',
     website: '#',
   },
+  {
+    id: 4,
+    name: 'Le Deballage des Caviars',
+    logo: '/partners/le-deballage-des-caviars.jpg',
+    description: 'Boutique des caviars',
+    website: '#',
+  },
 ]
 
 export default function Partners() {

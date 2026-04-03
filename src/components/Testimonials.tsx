@@ -11,7 +11,6 @@ const testimonials = [
     name: 'Sarah Mbadinga',
     role: 'Commerçante',
     location: 'Libreville, PK12',
-    image: '/testimonials/client1.jpg',
     rating: 5,
     text: 'Fast Express est devenu mon partenaire de confiance pour toutes mes livraisons. Les livreurs sont professionnels et ponctuels. Mon colis a été livré en moins de 24h à mon client à Owendo. Je recommande vivement !',
     date: '15 mars 2026',
@@ -21,7 +20,6 @@ const testimonials = [
     name: 'Marc Essono',
     role: "Chef d'entreprise",
     location: 'Libreville, Glass',
-    image: '/testimonials/client2.jpg',
     rating: 5,
     text: 'Service client réactif 7j/7 et livreurs géolocalisés, ça change tout ! Je peux suivre mes livraisons en temps réel et mes clients sont toujours satisfaits. Le déménagement de nos bureaux a été parfaitement organisé.',
     date: '28 février 2026',
@@ -31,7 +29,6 @@ const testimonials = [
     name: 'Amélie Ntoutoume',
     role: 'Particulier',
     location: 'Libreville, Akébé',
-    image: '/testimonials/client3.jpg',
     rating: 5,
     text: "Un service fiable et rapide ! Je fais appel à Fast Express depuis 6 mois et jamais déçue. Les livreurs sont formés et très courtois. Une équipe professionnelle à l'écoute de ses clients.",
     date: '10 mars 2026',
@@ -69,7 +66,6 @@ export default function Testimonials() {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
   }
 
-  // Auto-play carousel
   useEffect(() => {
     const interval = setInterval(() => {
       nextTestimonial()
@@ -77,7 +73,6 @@ export default function Testimonials() {
     return () => clearInterval(interval)
   }, [])
 
-  // Gestion du swipe tactile
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
   }
@@ -119,23 +114,22 @@ export default function Testimonials() {
       id="temoignages"
       className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden"
     >
-      {/* Image de fond en 16:9 avec overlay optimisé */}
+      {/* Image de fond avec overlay */}
       <div className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
           <Image
-            src="/testimonials/testimonials-bg.png"
+            src="/testimonials/testimonials-bg.jpg"
             alt="Background"
             fill
             className="object-cover"
             priority
             sizes="100vw"
           />
-          {/* Overlay sombre avec opacité responsive */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
         </div>
       </div>
 
-      {/* Background decorations simplifiées pour mobile */}
+      {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute inset-0 opacity-[0.02] md:opacity-[0.03]"
@@ -157,7 +151,7 @@ export default function Testimonials() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-        {/* Section header - Tailles optimisées */}
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -194,23 +188,23 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonials carousel */}
-        <div 
+        <div
           className="relative"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Navigation buttons - Position optimisée */}
+          {/* Navigation buttons */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur border border-white/20 rounded-full p-2 md:p-3 hover:bg-[#f5a623] hover:border-[#f5a623] transition-all duration-300 group disabled:opacity-50"
+            className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur border border-white/20 rounded-full p-2 md:p-3 hover:bg-[#f5a623] hover:border-[#f5a623] transition-all duration-300 group"
             aria-label="Témoignage précédent"
           >
             <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-[#1a5c2a]" />
           </button>
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur border border-white/20 rounded-full p-2 md:p-3 hover:bg-[#f5a623] hover:border-[#f5a623] transition-all duration-300 group disabled:opacity-50"
+            className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur border border-white/20 rounded-full p-2 md:p-3 hover:bg-[#f5a623] hover:border-[#f5a623] transition-all duration-300 group"
             aria-label="Témoignage suivant"
           >
             <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-[#1a5c2a]" />
@@ -230,74 +224,42 @@ export default function Testimonials() {
                 className="w-full"
               >
                 <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 shadow-2xl">
-                  {/* Layout responsive optimisé */}
-                  <div className="flex flex-col md:grid md:grid-cols-[auto,1fr] gap-5 md:gap-6 lg:gap-8 items-center md:items-start">
-                    {/* Left - Photo client */}
-                    <div className="flex flex-col items-center md:items-start flex-shrink-0">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-[#f5a623]/30 rounded-full blur-xl animate-pulse" />
-                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden ring-4 ring-[#f5a623]/50 bg-white/10">
-                          <Image
-                            src={current.image}
-                            alt={current.name}
-                            width={128}
-                            height={128}
-                            className="object-cover w-full h-full"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement
-                              target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(current.name)}&background=f5a623&color=fff&size=128&bold=true&rounded=true`
-                            }}
-                          />
-                        </div>
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ delay: 0.2 }}
-                          className="absolute -bottom-1 -right-1 bg-[#f5a623] rounded-full p-1 shadow-lg"
-                        >
-                          <Quote className="w-2.5 h-2.5 text-[#1a5c2a]" />
-                        </motion.div>
-                      </div>
-                      <div className="mt-3 text-center md:text-left">
-                        <h3 className="text-white font-bold text-sm sm:text-base md:text-lg">{current.name}</h3>
-                        <p className="text-white/60 text-xs">{current.role}</p>
-                        <p className="text-white/40 text-[10px]">{current.location}</p>
-                      </div>
+
+                  {/* Quote icon */}
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-[#f5a623]/20 border border-[#f5a623]/30 rounded-full p-2">
+                      <Quote className="w-4 h-4 text-[#f5a623]" />
                     </div>
+                  </div>
 
-                    {/* Right - Témoignage */}
-                    <div className="flex-1 w-full">
-                      {/* Rating and date */}
-                      <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-3">
-                        <StarRating rating={current.rating} />
-                        <span className="text-white/40 text-xs">{current.date}</span>
-                      </div>
+                  {/* Rating and date */}
+                  <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+                    <StarRating rating={current.rating} />
+                    <span className="text-white/40 text-xs">{current.date}</span>
+                  </div>
 
-                      {/* Text - Tailles de texte adaptatives */}
-                      <motion.blockquote
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed mb-4 text-center md:text-left"
-                      >
-                        &quot;{current.text}&quot;
-                      </motion.blockquote>
+                  {/* Text */}
+                  <motion.blockquote
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed text-center mb-6"
+                  >
+                    &quot;{current.text}&quot;
+                  </motion.blockquote>
 
-                      {/* Signature */}
-                      <div className="flex items-center justify-center md:justify-start gap-3 pt-3 border-t border-white/10">
-                        <div className="w-6 md:w-8 h-px bg-[#f5a623]" />
-                        <p className="text-white/50 text-xs">
-                          {current.name}, {current.role}
-                        </p>
-                      </div>
-                    </div>
+                  {/* Author info */}
+                  <div className="flex flex-col items-center gap-1 pt-4 border-t border-white/10">
+                    <p className="text-white font-bold text-sm sm:text-base">{current.name}</p>
+                    <p className="text-white/60 text-xs">{current.role}</p>
+                    <p className="text-white/40 text-[10px]">{current.location}</p>
                   </div>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Dots indicators - Espacement optimisé */}
+          {/* Dots indicators */}
           <div className="flex justify-center gap-2 mt-6 md:mt-8">
             {testimonials.map((_, index) => (
               <button
@@ -317,7 +279,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Stats - Grille responsive optimisée */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
