@@ -207,7 +207,7 @@ export default function Contact() {
                   href="mailto:Fastexpresslbv@gmail.com"
                   className="text-[#f5a623] hover:underline transition-colors"
                 >
-                  Fastexpresslbv@gmail.com
+                  fastexpresslbv@gmail.com
                 </a>
               </p>
             </div>

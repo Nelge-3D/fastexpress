@@ -251,14 +251,14 @@ export default function Navbar() {
                       shouldShowScrolledStyle ? 'text-[#1a5c2a]' : 'text-white'
                     }`}
                   >
-                    Fast Express
+                    Fast Livraison
                   </span>
                   <span
                     className={`text-[10px] font-medium tracking-widest uppercase ${
                       shouldShowScrolledStyle ? 'text-[#f5a623]' : 'text-[#f5a623]/80'
                     }`}
                   >
-                    Delivery
+                    Express
                   </span>
                 </div>
               </motion.div>

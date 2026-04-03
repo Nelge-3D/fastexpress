@@ -42,10 +42,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="font-bold text-lg text-white font-[var(--font-sora)]">
-              Fast Express
+              Fast Livraison
             </div>
             <div className="text-[10px] tracking-widest uppercase text-gray-500">
-              Delivery
+              Express
             </div>
           </div>
   
@@ -54,16 +54,7 @@ export default function Footer() {
             Livraison rapide à Libreville
           </p>
   
-          {/* CTA principal */}
-          <a
-            href="https://wa.me/24166647096"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#1a5c2a] text-white text-xs font-bold px-4 py-2.5 rounded-xl"
-          >
-            <MessageCircle className="w-4 h-4" />
-            Commander
-          </a>
+         
   
           {/* Contact minimal */}
           <div className="flex items-center gap-4 text-xs text-gray-500">
@@ -149,11 +140,11 @@ export default function Footer() {
         {/* ── BOTTOM ───────────────────────── */}
         <div className="border-t border-gray-800 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <p className="text-gray-600 text-xs">
-            © {new Date().getFullYear()} Fast Express Delivery
+            © {new Date().getFullYear()} Fast Livraison Express
           </p>
   
           <p className="text-gray-600 text-xs flex items-center gap-1">
-            Fait avec <Heart className="w-2.5 h-2.5 text-red-500 fill-red-500" /> au Gabon
+          Tous droits réservés
           </p>
         </div>
   
