@@ -98,7 +98,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
           {/* LEFT - Contenu principal */}
-          <div className="text-center lg:text-left">
+          <div className="text-center pt-6 lg:text-left">
             {/* Title responsive */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
