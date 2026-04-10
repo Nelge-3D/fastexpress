@@ -43,6 +43,34 @@ const partners: Partner[] = [
     description: 'Boutique des caviars',
     website: '#',
   },
+  {
+    id: 5,
+    name: 'Wendy Senegal Personal Shopper',
+    logo: '/partners/wendy-senegal.jpg',
+    description: 'Personal Shopper',
+    website: '#',
+  },
+  {
+    id: 6,
+    name: 'Andrea\'s Glory Shop',
+    logo: '/partners/andreas-glory-shop.jpg',
+    description: 'Shop',
+    website: '#',
+  },
+  {
+    id: 7,
+    name: 'Mema',
+    logo: '/partners/mema.jpg',
+    description: 'Boutique',
+    website: '#',
+  },
+  {
+    id: 8,
+    name: 'William E-shop',
+    logo: '/partners/william-e-shop.jpg',
+    description: 'E-shop',
+    website: '#',
+  },
 ]
 
 export default function Partners() {
