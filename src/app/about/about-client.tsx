@@ -27,9 +27,9 @@ const members = [
     color: 'bg-emerald-600' 
   },
   { 
-    name: 'Stéphane MOMBO LEDEHAN', 
+    name: 'Stéphane LENDEHAN', 
     role: 'Co-Gérant & Fondateur', 
-    photo: '/team/mombo-ledehan-stephane.png',
+    photo: '/team/lendehan-stephane.png',
     color: 'bg-amber-500' 
   },
   { 
