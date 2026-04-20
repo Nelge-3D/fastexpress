@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/Whatsappbutton'
+import { Analytics } from '@vercel/analytics/next'
 
 const sora = Sora({
   subsets: ['latin'],
@@ -50,6 +51,7 @@ export default function RootLayout({
     <html lang="fr" className={`${sora.variable} ${inter.variable}`}>
       <body className={`${inter.className} antialiased`}>
         <Navbar/><WhatsAppButton/>{children}<Footer/>
+        <Analytics />
       </body>
     </html>
   )
