@@ -15,7 +15,6 @@ import {
   TrendingUp,
 } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
 const stats = [
   { icon: Package, value: '5 000+', label: 'Colis livrés' },
@@ -44,20 +43,6 @@ const WHATSAPP_ORDER = 'https://wa.me/24166647096?text=Bonjour%2C%20je%20voudrai
 const WHATSAPP_CALL  = 'https://wa.me/24177520785'
 
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024)
-    }
-    
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
   return (
     <section
       id="accueil"
@@ -68,28 +53,23 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a5c2a] via-[#1f6a32] to-[#0f3d1d]" />
         
         {/* Animations désactivées sur mobile pour performance */}
-        {!isMobile && (
-          <>
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 10, repeat: Infinity }}
-              className="absolute top-[-150px] right-[-150px] w-[500px] h-[500px] bg-[#f5a623]/20 rounded-full blur-[120px]"
-            />
-            <motion.div
-              animate={{ scale: [1.2, 1, 1.2] }}
-              transition={{ duration: 12, repeat: Infinity }}
-              className="absolute bottom-[-200px] left-[-200px] w-[600px] h-[600px] bg-black/20 rounded-full blur-[120px]"
-            />
-          </>
-        )}
-        
-        {/* Pattern simplifié sur mobile */}
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="hidden md:block absolute top-[-150px] right-[-150px] w-[500px] h-[500px] bg-[#f5a623]/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1.2, 1, 1.2] }}
+          transition={{ duration: 12, repeat: Infinity }}
+          className="hidden md:block absolute bottom-[-200px] left-[-200px] w-[600px] h-[600px] bg-black/20 rounded-full blur-[120px]"
+        />
+
         <div
           className="absolute inset-0 opacity-[0.03] md:opacity-[0.05]"
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: isMobile ? '40px 40px' : '60px 60px',
+            backgroundSize: '40px 40px',
           }}
         />
       </div>

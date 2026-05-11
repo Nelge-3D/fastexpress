@@ -98,8 +98,8 @@ const motoRoutes = [
     price: '2500', 
     hasDoublePrice: true,
     price2: '3 000' },
-  { from: 'Libreville ', to: 'Owendo', price: '3 000' },
-  { from: 'Owendo ', to: 'Owendo', price: '2 000' },
+  { from: 'Libreville', to: 'Owendo', price: '3 000' },
+  { from: 'Owendo', to: 'Owendo', price: '2 000' },
   { 
     from: 'Akanda', 
     to: 'PK12/Bikele', 
@@ -395,7 +395,7 @@ export default function Services() {
 
               {/* Left */}
               <div className={`
-                bg-gradient-to-br from-white-500 to-white-600
+                bg-white
                 px-5 py-8 gap-6
                 sm:px-6 sm:py-9 sm:gap-7
                 lg:px-8 lg:py-10 lg:gap-8

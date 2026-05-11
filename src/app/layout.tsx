@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Sora, Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -37,7 +37,18 @@ export const metadata: Metadata = {
     description: 'Vos colis livrés rapidement partout à Libreville',
     type: 'website',
     locale: 'fr_GA',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Fast Livraison Express — Livraison & Déménagement à Libreville',
+      },
+    ],
   },
+}
+
+export const viewport: Viewport = {
   themeColor: '#1a5c2a',
 }
 

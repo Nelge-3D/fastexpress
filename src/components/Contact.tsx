@@ -51,7 +51,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Nom : ${form.name}\nEmail : ${form.email}\n\nMessage :\n${form.message}`
     )
-    window.location.href = `mailto:Fastexpresslbv@gmail.com?subject=${subject}&body=${body}`
+    window.open(`mailto:Fastexpresslbv@gmail.com?subject=${subject}&body=${body}`)
 
     setTimeout(() => {
       setSending(false)
@@ -220,8 +220,8 @@ export default function Contact() {
               className="flex flex-col items-center justify-center gap-3 py-8 text-center"
             >
               <CheckCircle className="w-12 h-12 text-[#f5a623] drop-shadow-lg" />
-              <p className="text-white font-semibold text-base">Message envoyé !</p>
-              <p className="text-white/50 text-sm">Nous vous répondrons dans les plus brefs délais.</p>
+              <p className="text-white font-semibold text-base">Client mail ouvert !</p>
+              <p className="text-white/50 text-sm">Envoyez le message depuis votre client mail pour nous contacter.</p>
               <button
                 onClick={() => setSent(false)}
                 className="mt-2 text-[#f5a623] text-sm underline underline-offset-2 hover:opacity-80 transition-opacity"
@@ -292,7 +292,7 @@ export default function Contact() {
                 ) : (
                   <>
                     <Send className="w-4 h-4 drop-shadow" />
-                    Envoyer le message
+                    Ouvrir dans mon client mail
                   </>
                 )}
               </motion.button>

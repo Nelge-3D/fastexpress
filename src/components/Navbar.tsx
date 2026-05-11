@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X, Phone } from 'lucide-react'
 import Image from 'next/image'
@@ -36,7 +36,6 @@ export default function Navbar() {
   
   // États dérivés
   const isHomePage = pathname === '/'
-  const isAboutPage = pathname === '/about'
   const shouldShowScrolledStyle = scrolled || !isHomePage
 
   // Gestion du scroll avec throttling
@@ -127,25 +126,22 @@ export default function Navbar() {
     return isHomePage && activeSection === link.href.replace('#', '')
   }, [isHomePage, pathname, activeSection])
 
-  // Styles dynamiques
-  const getTextColor = useCallback((isActive: boolean) => {
+  const getTextColor = (isActive: boolean) => {
     if (isActive) {
       return shouldShowScrolledStyle ? 'text-[#1a5c2a]' : 'text-[#f5a623]'
     }
     return shouldShowScrolledStyle ? 'text-gray-600 hover:text-[#1a5c2a]' : 'text-white/80 hover:text-white'
-  }, [shouldShowScrolledStyle])
+  }
 
-  const getButtonColor = useCallback(() => {
-    return shouldShowScrolledStyle
+  const getButtonColor = () =>
+    shouldShowScrolledStyle
       ? 'bg-[#1a5c2a] text-white hover:bg-[#246b35]'
       : 'bg-[#f5a623] text-[#1a5c2a] hover:bg-[#fbbf47]'
-  }, [shouldShowScrolledStyle])
 
-  // Mémorisation des liens pour éviter les re-rendus inutiles
-  const desktopLinks = useMemo(() => navLinks.map((link) => {
+  const desktopLinks = navLinks.map((link) => {
     const isActive = isActiveLink(link)
     const textColor = getTextColor(isActive)
-    
+
     if (link.isPage) {
       return (
         <Link key={link.href} href={link.href}>
@@ -165,7 +161,7 @@ export default function Navbar() {
         </Link>
       )
     }
-    
+
     return (
       <button
         key={link.href}
@@ -181,9 +177,9 @@ export default function Navbar() {
         )}
       </button>
     )
-  }), [isActiveLink, getTextColor, handleLinkClick])
+  })
 
-  const mobileLinks = useMemo(() => navLinks.map((link, index) => {
+  const mobileLinks = navLinks.map((link, index) => {
     if (link.isPage) {
       return (
         <Link key={link.href} href={link.href} onClick={() => setMobileOpen(false)}>
@@ -199,7 +195,7 @@ export default function Navbar() {
         </Link>
       )
     }
-    
+
     return (
       <motion.button
         key={link.href}
@@ -213,7 +209,7 @@ export default function Navbar() {
         <span className="text-[#f5a623]">→</span>
       </motion.button>
     )
-  }), [handleLinkClick])
+  })
 
   return (
     <>

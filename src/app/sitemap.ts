@@ -8,14 +8,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 1,
     },
-    // Si tu as d'autres pages comme /services ou /contact, ajoute-les ici :
-    /*
     {
-      url: 'https://www.fastexpress.ga/services',
+      url: 'https://www.fastexpress.ga/business',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
-    */
+    {
+      url: 'https://www.fastexpress.ga/about',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.6,
+    },
   ]
 }

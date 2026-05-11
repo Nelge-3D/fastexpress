@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'motion/react'
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const testimonials = [
   {
@@ -56,22 +56,20 @@ export default function Testimonials() {
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
 
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     setDirection(1)
     setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+  }, [])
 
-  const prevTestimonial = () => {
+  const prevTestimonial = useCallback(() => {
     setDirection(-1)
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+  }, [])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextTestimonial()
-    }, 5000)
+    const interval = setInterval(nextTestimonial, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [nextTestimonial])
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
@@ -119,10 +117,9 @@ export default function Testimonials() {
         <div className="relative w-full h-full">
           <Image
             src="/testimonials/testimonials-bg.jpg"
-            alt="Background"
+            alt=""
             fill
             className="object-cover"
-            priority
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
