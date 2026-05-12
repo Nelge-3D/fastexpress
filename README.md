@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fast Express — Site vitrine
 
-## Getting Started
+Site web officiel de **Fast Express**, entreprise de livraison et déménagement à Libreville, Gabon.
 
-First, run the development server:
+## Aperçu
+
+Fast Express est un service logistique proposant la livraison de colis, le déménagement et des solutions aux entreprises dans toute la zone urbaine de Libreville. Ce dépôt contient le code source du site vitrine.
+
+## Stack technique
+
+- **Framework** — [Next.js 15](https://nextjs.org/) (App Router)
+- **React** — 19.1
+- **Styles** — [Tailwind CSS v4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Animations** — [Motion](https://motion.dev/) (Framer Motion v12)
+- **Icônes** — [Lucide React](https://lucide.dev/)
+- **Analytics** — [Vercel Analytics](https://vercel.com/analytics)
+- **Langage** — TypeScript (strict)
+- **Package manager** — pnpm
+
+## Pages
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (Hero, Services, Témoignages, Contact) |
+| `/about` | Présentation de l'équipe et de l'entreprise |
+| `/business` | Solutions logistiques pour les entreprises |
+
+## Lancer le projet en local
+
+**Prérequis** : Node.js 18+ et pnpm installés.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Cloner le dépôt
+git clone https://github.com/<ton-username>/fastexpress.git
+cd fastexpress
+
+# Installer les dépendances
+pnpm install
+
+# Démarrer le serveur de développement
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000) dans le navigateur.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts disponibles
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev      # Serveur de développement
+pnpm build    # Build de production
+pnpm start    # Démarrer le build de production
+pnpm lint     # Linter ESLint
+```
 
-## Learn More
+## Structure du projet
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── page.tsx          # Page d'accueil
+│   ├── layout.tsx        # Layout global (Navbar, Footer, Analytics)
+│   ├── about/            # Page À propos
+│   └── business/         # Page Solutions entreprises
+├── components/
+│   ├── Hero.tsx
+│   ├── Services.tsx
+│   ├── Testimonials.tsx
+│   ├── Contact.tsx
+│   ├── Parteners.tsx
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── Whatsappbutton.tsx
+│   └── ui/               # Composants shadcn/ui
+└── lib/
+    └── utils.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Déploiement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Le site est déployé sur [Vercel](https://vercel.com). Chaque push sur la branche `main` déclenche un déploiement automatique.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Fast Express — Libreville, Gabon*

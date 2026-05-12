@@ -1,21 +1,26 @@
 import { MetadataRoute } from 'next'
 
+const BASE_URL = 'https://www.fastexpress.ga'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://www.fastexpress.ga',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
+      url: BASE_URL,
+      lastModified: new Date('2026-05-12'),
+      changeFrequency: 'monthly',
       priority: 1,
     },
-    // Si tu as d'autres pages comme /services ou /contact, ajoute-les ici :
-    /*
     {
-      url: 'https://www.fastexpress.ga/services',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      url: `${BASE_URL}/about`,
+      lastModified: new Date('2026-05-12'),
+      changeFrequency: 'yearly',
+      priority: 0.7,
     },
-    */
+    {
+      url: `${BASE_URL}/business`,
+      lastModified: new Date('2026-05-12'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
   ]
 }

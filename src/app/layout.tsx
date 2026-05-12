@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   description:
     'Fast Express, votre partenaire logistique de confiance à Libreville. Livraison de colis, Déménagement et services aux entreprises. Commandez via WhatsApp.',
   keywords: [
+    'livraison Gabon',
     'livraison Libreville',
     'Déménagement Gabon',
     'Fast Express',
@@ -51,9 +52,12 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${sora.variable} ${inter.variable}`}>
       <body className={`${inter.className} antialiased`}>
-        <Navbar/><WhatsAppButton/>{children}<Footer/>
+        <Navbar/>
+        <WhatsAppButton/>
+        {children}
         <Analytics />
         <SpeedInsights />
+        <Footer/>
       </body>
     </html>
   )
